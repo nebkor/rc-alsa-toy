@@ -3,6 +3,8 @@
   This example reads from the default PCM device
   and writes to standard output for 5 seconds of data.
 
+  https://www.linuxjournal.com/article/6735?page=0,2
+
 */
 
 /* Use the newer ALSA API */

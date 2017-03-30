@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+// stolen from http://equalarea.com/paul/alsa-audio.html#captureex
+
 // Globals are generally a bad idea in code.  We're using one here to keep it simple.
 snd_pcm_t * _soundDevice;
 
