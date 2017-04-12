@@ -47,15 +47,20 @@ int main() {
 
   /* Signed 16-bit little-endian format */
   snd_pcm_hw_params_set_format(handle, params,
-                               SND_PCM_FORMAT_S16_LE);
+                               SND_PCM_FORMAT_S32_LE);
 
   /* Two channels (stereo) */
   snd_pcm_hw_params_set_channels(handle, params, 2);
 
   /* 44100 bits/second sampling rate (CD quality) */
   val = 44100;
+
+  fprintf(stderr, "what even is dir %d\n", dir);
+
   snd_pcm_hw_params_set_rate_near(handle, params,
                                   &val, &dir);
+
+  fprintf(stderr, "dir is now %d\n", dir);
 
   /* Set period size to 32 frames. */
   frames = 32;
@@ -74,7 +79,7 @@ int main() {
   /* Use a buffer large enough to hold one period */
   snd_pcm_hw_params_get_period_size(params,
                                     &frames, &dir);
-  size = frames * 4; /* 2 bytes/sample, 2 channels */
+  size = frames * 8; /* 4 bytes/sample, 2 channels */
   buffer = (char *) malloc(size);
 
   /* We want to loop for 5 seconds */
