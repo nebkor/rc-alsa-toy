@@ -1,3 +1,8 @@
+ALL := alsa-capture ne-alsa-capture glprog
+
+all: $(ALL)
+	@echo Done
+
 alsa-capture: alsa-capture.c
 	gcc -o $@ $< -lasound
 
@@ -8,5 +13,5 @@ glprog: ne_glprog.c
 	gcc -o $@ $< -lglut -lGLU -lrt -lGL
 
 clean:
-	$(RM) alsa-capture
+	$(RM) $(ALL)
 
